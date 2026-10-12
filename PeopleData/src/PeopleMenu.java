@@ -7,7 +7,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class PeopleMenu extends JFrame {
     private JPanel mainPanel;
@@ -23,8 +22,8 @@ public class PeopleMenu extends JFrame {
     private JLabel titleLabel;
 
     // variabel global
-    private ArrayList<Person> listPerson;
     int selectedIndex = -1;
+    String curId = "";
 
     // variabel database
     private Database database;
@@ -50,14 +49,8 @@ public class PeopleMenu extends JFrame {
 
     // constructor
     public PeopleMenu() {
-        // inisialisasi listPerson
-        listPerson = new ArrayList<>();
-
         // instansiasi databse
         database = new Database();
-
-        // isi data list
-        populateList();
 
         // isi personTable
         personTable.setModel(setTable());
@@ -70,11 +63,11 @@ public class PeopleMenu extends JFrame {
         kategoriComboBox.setModel(new DefaultComboBoxModel<>(kategoriData));
 
         // set slider
-        kebugaranSlider.setMinimum(0);
+        kebugaranSlider.setMinimum(1);
         kebugaranSlider.setMaximum(10);
-        kebugaranSlider.setValue(0);
+        kebugaranSlider.setValue(1);
         kebugaranSlider.setMinorTickSpacing(1);
-        kebugaranSlider.setMajorTickSpacing(5);
+        kebugaranSlider.setMajorTickSpacing(3);
         kebugaranSlider.setPaintTicks(true);
         kebugaranSlider.setPaintLabels(true);
 
@@ -127,11 +120,14 @@ public class PeopleMenu extends JFrame {
                 selectedIndex = personTable.getSelectedRow();
 
                 // ambil value dari table
-                String id = personTable.getModel().getValueAt(selectedIndex, 1).toString();
-                String nama = personTable.getModel().getValueAt(selectedIndex, 2).toString();
-                String tahunLahir = personTable.getModel().getValueAt(selectedIndex, 3).toString();
-                String kategori = personTable.getModel().getValueAt(selectedIndex, 4).toString();
-                String kebugaran = personTable.getModel().getValueAt(selectedIndex, 5).toString();
+                String id = personTable.getModel().getValueAt(selectedIndex, 0).toString();
+                String nama = personTable.getModel().getValueAt(selectedIndex, 1).toString();
+                String tahunLahir = personTable.getModel().getValueAt(selectedIndex, 2).toString();
+                String kategori = personTable.getModel().getValueAt(selectedIndex, 3).toString();
+                String kebugaran = personTable.getModel().getValueAt(selectedIndex, 4).toString();
+
+                // mengambil id dari data yang diklik
+                curId = id;
 
                 // isi textfield
                 idField.setText(id);
@@ -180,29 +176,6 @@ public class PeopleMenu extends JFrame {
         return tmp;
     }
 
-    public void populateList() {
-        listPerson.add(new Person("A001", "Rizky Ramadhan", 2001, "Pemula", 6));
-        listPerson.add(new Person("A002", "Bimo Prasetyo", 1998, "Menengah", 8));
-        listPerson.add(new Person("A003", "Fajar Nugroho", 1995, "Ahli", 9));
-        listPerson.add(new Person("A004", "Dimas Saputra", 2003, "Pemula", 5));
-        listPerson.add(new Person("A005", "Agus Setiawan", 1990, "Ahli", 10));
-        listPerson.add(new Person("A006", "Rudi Hartono", 1999, "Menengah", 7));
-        listPerson.add(new Person("A007", "Andi Wijaya", 2002, "Pemula", 6));
-        listPerson.add(new Person("A008", "Bagas Pratama", 1996, "Menengah", 8));
-        listPerson.add(new Person("A009", "Yoga Firmansyah", 1993, "Ahli", 9));
-        listPerson.add(new Person("A010", "Ilham Maulana", 2000, "Pemula", 7));
-    }
-
-    // method untuk cek ID pada list
-    public boolean cekId(String curId) {
-        // return false ketika id sudah ada dalam list
-        // return true ketika id belum ada dalam list
-        for(int i = 0; i < listPerson.size(); i++) {
-            if(listPerson.get(i).getId().equals(curId)) return false;
-        }
-        return true;
-    }
-
     // method insert
     public void insertData() {
         try {
@@ -212,6 +185,26 @@ public class PeopleMenu extends JFrame {
             int tahunLahir = Integer.parseInt(tahunField.getText());
             String kategori = kategoriComboBox.getSelectedItem().toString();
             int kebugaran = kebugaranSlider.getValue();
+            // error handling untuk id kosong
+            if(id.equals("")) {
+                JOptionPane.showMessageDialog(null, "ID tidak boleh kosong",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // error handling untuk nama kosong
+            if(nama.equals("")) {
+                JOptionPane.showMessageDialog(null, "Nama tidak boleh kosong",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // error handling untuk nama kosong
+            if(tahunField.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Tahun Lahir tidak boleh kosong",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
             // error handling untuk kategori kosong
             if(kategori.equals("???")) {
@@ -220,10 +213,7 @@ public class PeopleMenu extends JFrame {
                 return;
             }
 
-            if(cekId(id)) {
-                // menambahkan data ke dalam list
-                listPerson.add(new Person(id, nama, tahunLahir, kategori, kebugaran));
-
+            try {
                 // tambahkan data ke database
                 String sqlQuery = "INSERT INTO person VALUES ('" + id + "', '" + nama + "', "
                         + tahunLahir + ", '" + kategori + "', " + kebugaran + ");";
@@ -238,7 +228,7 @@ public class PeopleMenu extends JFrame {
                 // feedback
                 System.out.println("Insert Berhasil");
                 JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
-            } else {
+            } catch(RuntimeException e) {
                 // error handling ketika id sudah digunakan
                 System.out.println("ERROR : ID sudah dipakai");
                 JOptionPane.showMessageDialog(null, "ID sudah dipakai",
@@ -262,6 +252,27 @@ public class PeopleMenu extends JFrame {
             String kategori = kategoriComboBox.getSelectedItem().toString();
             int kebugaran = kebugaranSlider.getValue();
 
+            // error handling untuk id kosong
+            if(id.equals("")) {
+                JOptionPane.showMessageDialog(null, "ID tidak boleh kosong",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // error handling untuk nama kosong
+            if(nama.equals("")) {
+                JOptionPane.showMessageDialog(null, "Nama tidak boleh kosong",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // error handling untuk nama kosong
+            if(tahunField.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Tahun Lahir tidak boleh kosong",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             // error handling untuk kategori kosong
             if(kategori.equals("???")) {
                 JOptionPane.showMessageDialog(null, "Kategori tidak boleh kosong",
@@ -269,25 +280,25 @@ public class PeopleMenu extends JFrame {
                 return;
             }
 
-            if(cekId(id) || id.equals(listPerson.get(selectedIndex).getId())) {
-                // memperbarui data
-                listPerson.get(selectedIndex).setId(id);
-                listPerson.get(selectedIndex).setNama(nama);
-                listPerson.get(selectedIndex).setTahunLahir(tahunLahir);
-                listPerson.get(selectedIndex).setKategori(kategori);
-                listPerson.get(selectedIndex).setKebugaran(kebugaran);
+            try {
+                // query update
+                String sqlQuery = "UPDATE person SET id = '" + id + "', nama = '" + nama +
+                        "', thn_lahir = " + tahunLahir + ", kategori = '" + kategori + "', kebugaran = "
+                        + kebugaran + " WHERE id = '" + curId + "';";
+                database.insertUpdateDeleteQuery(sqlQuery);
 
-                // perbarui table
+                // update table
                 personTable.setModel(setTable());
 
-                // kosongkan form
+                // clear form
                 clearForm();
 
                 // feedback
                 System.out.println("Update Berhasil");
-                JOptionPane.showMessageDialog(null, "Data berhasil diubah");
-            } else {
+                JOptionPane.showMessageDialog(null, "Data berhasil diperbarui");
+            } catch (RuntimeException e){
                 // error handling ketika id sudah digunakan
+                idField.setText(curId);
                 System.out.println("ERROR : ID sudah dipakai");
                 JOptionPane.showMessageDialog(null, "ID sudah dipakai",
                         "Error", JOptionPane.ERROR_MESSAGE);
@@ -301,8 +312,9 @@ public class PeopleMenu extends JFrame {
     }
 
     public void deleteData() {
-        // hapus data dari list
-        listPerson.remove(selectedIndex);
+        // query delete
+        String sqrlQuery = "DELETE FROM person WHERE id = '" + curId + "';";
+        database.insertUpdateDeleteQuery(sqrlQuery);
 
         // update table
         personTable.setModel(setTable());
@@ -331,5 +343,8 @@ public class PeopleMenu extends JFrame {
 
         // ubah selectedItem menjadi default
         selectedIndex = -1;
+
+        // ubah curId
+        curId = "";
     }
 }
