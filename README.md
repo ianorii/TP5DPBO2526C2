@@ -14,8 +14,38 @@ TP5DPBO2526C2/
 ├── db_people.sql              -- file dump database MySQL
 ├── README.md
 ├── Dokumentasi/               -- dokumentasi pengujian program
-│   ├── *.webm                 -- video rekaman hasil pengujian
-│   └── *.gif                  -- konversi webm untuk ditampilkan di README
+│   ├── Read.webm
+│   ├── Read.gif
+│   ├── Insert.webm
+│   ├── insert1.gif
+│   ├── ErrorInsert2a.webm
+│   ├── insert2a.gif
+│   ├── ErrorInsert2b.webm
+│   ├── insert2b.gif
+│   ├── ErrorInsert2c.webm
+│   ├── insert2c.gif
+│   ├── ErrorInsert3.webm
+│   ├── insert3.gif
+│   ├── ErrorInsert4.webm
+│   ├── insert4.gif
+│   ├── Update.webm
+│   ├── update1.gif
+│   ├── UpdateError1.webm
+│   ├── update1-error.gif
+│   ├── UpdateError2a.webm
+│   ├── update2a.gif
+│   ├── UpdateError2b.webm
+│   ├── update2b.gif
+│   ├── UpdateError2c.webm
+│   ├── update2c.gif
+│   ├── ErrorUpdate3.webm
+│   ├── update3.gif
+│   ├── UpdateError4.webm
+│   ├── update4.gif
+│   ├── delete.webm
+│   ├── delete.gif
+│   ├── cancelDelete.webm
+│   └── delete-cancel.gif
 └── PeopleData/                -- project IntelliJ IDEA
     ├── .gitignore
     ├── lib/                   -- driver JDBC
@@ -121,11 +151,11 @@ Klik tombol "Cancel" untuk mengosongkan semua input form dan membatalkan mode ed
 
 ### 2. Input ID/Nama/Tahun Lahir Kosong
 
-| a. ID kosong | b. Nama kosong |
+| ID kosong | Nama kosong |
 | :---: | :---: |
 | <img src="Dokumentasi/insert2a.gif" width="380" alt="Insert ID kosong"> | <img src="Dokumentasi/insert2b.gif" width="380" alt="Insert nama kosong"> |
 
-| c. Tahun Lahir kosong |
+| Tahun Lahir kosong |
 | :---: |
 | <img src="Dokumentasi/insert2c.gif" width="380" alt="Insert tahun kosong"> |
 
@@ -142,17 +172,13 @@ Klik tombol "Cancel" untuk mengosongkan semua input form dan membatalkan mode ed
 
 <img src="Dokumentasi/update1.gif" width="520" alt="Update berhasil">
 
-| ID sudah dipakai |
-| :---: |
-| <img src="Dokumentasi/update1-error.gif" width="380" alt="Update ID sudah dipakai"> |
-
 ### 2. Input ID/Nama/Tahun Lahir Kosong
 
-| a. ID kosong | b. Nama kosong |
+| ID kosong | Nama kosong |
 | :---: | :---: |
 | <img src="Dokumentasi/update2a.gif" width="380" alt="Update ID kosong"> | <img src="Dokumentasi/update2b.gif" width="380" alt="Update nama kosong"> |
 
-| c. Tahun Lahir kosong |
+| Tahun Lahir kosong |
 | :---: |
 | <img src="Dokumentasi/update2c.gif" width="380" alt="Update tahun kosong"> |
 
@@ -163,6 +189,10 @@ Klik tombol "Cancel" untuk mengosongkan semua input form dan membatalkan mode ed
 ### 4. Tahun Bukan Angka
 
 <img src="Dokumentasi/update4.gif" width="520" alt="Update tahun bukan angka">
+
+## ID SUDAH DIGUNAKAN SAAT INSERT/UPDATE
+
+<img src="Dokumentasi/update1-error.gif" width="520" alt="ID sudah digunakan">
 
 ## DELETE
 ### Delete Berhasil
