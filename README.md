@@ -8,6 +8,25 @@ Program ini dibuat menggunakan Java Swing untuk mengelola data pendaki. Fitur ut
 - Update: Mengedit data pendaki yang sudah ada di database.
 - Delete: Menghapus data pendaki yang ada di database.
 
+## STRUKTUR FOLDER
+```text
+TP5DPBO2526C2/
+├── db_people.sql              -- file dump database MySQL
+├── README.md
+├── Dokumentasi/               -- dokumentasi pengujian program
+│   ├── *.webm                 -- video rekaman hasil pengujian
+│   └── *.gif                  -- konversi webm untuk ditampilkan di README
+└── PeopleData/                -- project IntelliJ IDEA
+    ├── .gitignore
+    ├── lib/                   -- driver JDBC
+    │   └── mysql-connector-j-26.7.0.jar
+    └── src/
+        ├── Person.java        -- class model data pendaki
+        ├── PeopleMenu.java    -- GUI dan logika program
+        ├── PeopleMenu.form    -- desain GUI dari IntelliJ GUI Designer
+        └── Database.java      -- koneksi dan eksekusi SQL
+```
+
 ## CLASS PADA PROGRAM:
 ### 1. Class Person
 Class ini berisi atribut dan method getter/setter. Berikut atribut-atributnya:
@@ -49,7 +68,7 @@ Fungsi utama:
 - selectQuery(String sql) - Menjalankan perintah SELECT dan mengembalikan hasilnya.
 - insertUpdateDeleteQuery(String sql) - Menjalankan perintah INSERT, UPDATE, atau DELETE ke database.
 
-Driver yang dipakai: MySQL Connector/J (lib/mysql-connector-j-8.3.0.jar).
+Driver yang dipakai: MySQL Connector/J (lib/mysql-connector-j-26.7.0.jar).
 
 # ALUR PROGRAM
 ### 1. Tampilan Utama
@@ -93,69 +112,63 @@ Klik tombol "Cancel" untuk mengosongkan semua input form dan membatalkan mode ed
 
 ## READ
 
-![Read](Dokumentasi/Read.gif)
+<img src="Dokumentasi/Read.gif" width="520" alt="Read">
 
 ## ADD
 ### 1. Insert Berhasil
 
-![Insert berhasil](Dokumentasi/insert1.gif)
+<img src="Dokumentasi/insert1.gif" width="520" alt="Insert berhasil">
 
-### 2. Insert Tapi Ada Form Kosong
-a. ID kosong
+### 2. Input ID/Nama/Tahun Lahir Kosong
 
-![Insert ID kosong](Dokumentasi/insert2a.gif)
+| a. ID kosong | b. Nama kosong |
+| :---: | :---: |
+| <img src="Dokumentasi/insert2a.gif" width="380" alt="Insert ID kosong"> | <img src="Dokumentasi/insert2b.gif" width="380" alt="Insert nama kosong"> |
 
-b. Nama kosong
+| c. Tahun Lahir kosong |
+| :---: |
+| <img src="Dokumentasi/insert2c.gif" width="380" alt="Insert tahun kosong"> |
 
-![Insert nama kosong](Dokumentasi/insert2b.gif)
+### 3. Kategori Kosong
 
-c. Tahun lahir kosong
+<img src="Dokumentasi/insert3.gif" width="520" alt="Insert kategori kosong">
 
-![Insert tahun kosong](Dokumentasi/insert2c.gif)
+### 4. Tahun Bukan Angka
 
-### 3. Insert Kategori Kosong
-
-![Insert kategori kosong](Dokumentasi/insert3.gif)
-
-### 4. Insert Tahun Bukan Angka
-
-![Insert tahun bukan angka](Dokumentasi/insert4.gif)
+<img src="Dokumentasi/insert4.gif" width="520" alt="Insert tahun bukan angka">
 
 ## UPDATE
 ### 1. Update Berhasil
 
-![Update berhasil](Dokumentasi/update1.gif)
+<img src="Dokumentasi/update1.gif" width="520" alt="Update berhasil">
 
-ID sudah dipakai
+| ID sudah dipakai |
+| :---: |
+| <img src="Dokumentasi/update1-error.gif" width="380" alt="Update ID sudah dipakai"> |
 
-![Update ID sudah dipakai](Dokumentasi/update1-error.gif)
+### 2. Input ID/Nama/Tahun Lahir Kosong
 
-### 2. Update Tapi Ada Form Kosong
-a. ID kosong
+| a. ID kosong | b. Nama kosong |
+| :---: | :---: |
+| <img src="Dokumentasi/update2a.gif" width="380" alt="Update ID kosong"> | <img src="Dokumentasi/update2b.gif" width="380" alt="Update nama kosong"> |
 
-![Update ID kosong](Dokumentasi/update2a.gif)
+| c. Tahun Lahir kosong |
+| :---: |
+| <img src="Dokumentasi/update2c.gif" width="380" alt="Update tahun kosong"> |
 
-b. Nama kosong
+### 3. Kategori Kosong
 
-![Update nama kosong](Dokumentasi/update2b.gif)
+<img src="Dokumentasi/update3.gif" width="520" alt="Update kategori kosong">
 
-c. Tahun lahir kosong
+### 4. Tahun Bukan Angka
 
-![Update tahun kosong](Dokumentasi/update2c.gif)
-
-### 3. Update Kategori Kosong
-
-![Update kategori kosong](Dokumentasi/update3.gif)
-
-### 4. Update Tahun Bukan Angka
-
-![Update tahun bukan angka](Dokumentasi/update4.gif)
+<img src="Dokumentasi/update4.gif" width="520" alt="Update tahun bukan angka">
 
 ## DELETE
 ### Delete Berhasil
 
-![Delete berhasil](Dokumentasi/delete.gif)
+<img src="Dokumentasi/delete.gif" width="520" alt="Delete berhasil">
 
 ### Delete Dibatalkan
 
-![Delete dibatalkan](Dokumentasi/delete-cancel.gif)
+<img src="Dokumentasi/delete-cancel.gif" width="520" alt="Delete dibatalkan">
