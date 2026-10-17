@@ -11,19 +11,19 @@ Program ini dibuat menggunakan Java Swing untuk mengelola data pendaki. Fitur ut
 ## STRUKTUR FOLDER
 ```text
 TP5DPBO2526C2/
-├── db_people.sql              -- file dump database MySQL
+├── db_people.sql
 ├── README.md
-├── Dokumentasi/               -- dokumentasi pengujian program
+├── Dokumentasi/
 │   └── *.gif
-└── PeopleData/                -- project IntelliJ IDEA
+└── PeopleData/
     ├── .gitignore
-    ├── lib/                   -- driver JDBC
+    ├── lib/
     │   └── mysql-connector-j-26.7.0.jar
     └── src/
-        ├── Person.java        -- class model data pendaki
-        ├── PeopleMenu.java    -- GUI dan logika program
-        ├── PeopleMenu.form    -- desain GUI dari IntelliJ GUI Designer
-        └── Database.java      -- koneksi dan eksekusi SQL
+        ├── Person.java
+        ├── PeopleMenu.java
+        ├── PeopleMenu.form
+        └── Database.java
 ```
 
 ## CLASS PADA PROGRAM:
