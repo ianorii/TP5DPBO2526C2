@@ -49,7 +49,7 @@ Fungsi utama:
 - selectQuery(String sql) - Menjalankan perintah SELECT dan mengembalikan hasilnya.
 - insertUpdateDeleteQuery(String sql) - Menjalankan perintah INSERT, UPDATE, atau DELETE ke database.
 
-Driver yang dipakai: MySQL Connector/J (lib/mysql-connector-j-8.3.0.jar).
+Driver yang dipakai: MySQL Connector/J (lib/mysql-connector-j-26.7.0.jar).
 
 # STRUKTUR FOLDER
 ```
@@ -111,7 +111,6 @@ Jika memilih No, penghapusan dibatalkan dan data tetap ada.
 Klik tombol "Cancel" untuk mengosongkan semua input form dan membatalkan mode edit (tombol kembali menjadi "Add", tombol Delete hilang).
 
 # DOKUMENTASI
-Semua dokumentasi disimpan di folder Dokumentasi/. Ganti setiap penanda di bawah dengan screenshot atau GIF milikmu.
 
 ## READ
 Menampilkan tampilan awal program dengan tabel data pendaki.
