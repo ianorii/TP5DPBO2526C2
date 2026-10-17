@@ -14,38 +14,7 @@ TP5DPBO2526C2/
 ├── db_people.sql              -- file dump database MySQL
 ├── README.md
 ├── Dokumentasi/               -- dokumentasi pengujian program
-│   ├── Read.webm
-│   ├── Read.gif
-│   ├── Insert.webm
-│   ├── insert1.gif
-│   ├── ErrorInsert2a.webm
-│   ├── insert2a.gif
-│   ├── ErrorInsert2b.webm
-│   ├── insert2b.gif
-│   ├── ErrorInsert2c.webm
-│   ├── insert2c.gif
-│   ├── ErrorInsert3.webm
-│   ├── insert3.gif
-│   ├── ErrorInsert4.webm
-│   ├── insert4.gif
-│   ├── Update.webm
-│   ├── update1.gif
-│   ├── UpdateError1.webm
-│   ├── update1-error.gif
-│   ├── UpdateError2a.webm
-│   ├── update2a.gif
-│   ├── UpdateError2b.webm
-│   ├── update2b.gif
-│   ├── UpdateError2c.webm
-│   ├── update2c.gif
-│   ├── ErrorUpdate3.webm
-│   ├── update3.gif
-│   ├── UpdateError4.webm
-│   ├── update4.gif
-│   ├── delete.webm
-│   ├── delete.gif
-│   ├── cancelDelete.webm
-│   └── delete-cancel.gif
+│   └── *.gif
 └── PeopleData/                -- project IntelliJ IDEA
     ├── .gitignore
     ├── lib/                   -- driver JDBC
