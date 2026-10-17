@@ -8,7 +8,7 @@ public class Database {
     public Database() {
         try {
             connection = DriverManager.getConnection(
-                    "jdbc:mariadb://localhost:3306/db_people",
+                    "jdbc:mysql://localhost:3306/db_people",
                     "root",
                     ""
             );

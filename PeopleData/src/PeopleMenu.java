@@ -112,7 +112,7 @@ public class PeopleMenu extends JFrame {
             }
         });
 
-
+        // ketika data pada table di-klik
         personTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -170,6 +170,7 @@ public class PeopleMenu extends JFrame {
                 i++;
             }
         } catch (SQLException e) {
+            // jika terjadi error pada database
             throw new RuntimeException(e);
         }
 
@@ -182,11 +183,22 @@ public class PeopleMenu extends JFrame {
             // ambil value dari semua inputan
             String id = idField.getText();
             String nama = namaField.getText();
+
+            // error handlng untuk tahun kosong
+            if(tahunField.getText().equals("")) {
+                System.out.println("ERROR : Tahun lahir kosong");
+                JOptionPane.showMessageDialog(null, "Tahun lahir tidak boleh kosong",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             int tahunLahir = Integer.parseInt(tahunField.getText());
             String kategori = kategoriComboBox.getSelectedItem().toString();
             int kebugaran = kebugaranSlider.getValue();
+
             // error handling untuk id kosong
             if(id.equals("")) {
+                System.out.println("ERROR : ID kosong");
                 JOptionPane.showMessageDialog(null, "ID tidak boleh kosong",
                         "Error", JOptionPane.ERROR_MESSAGE);
                 return;
@@ -194,20 +206,15 @@ public class PeopleMenu extends JFrame {
 
             // error handling untuk nama kosong
             if(nama.equals("")) {
+                System.out.println("ERROR : Nama kosong");
                 JOptionPane.showMessageDialog(null, "Nama tidak boleh kosong",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            // error handling untuk nama kosong
-            if(tahunField.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Tahun Lahir tidak boleh kosong",
                         "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
             // error handling untuk kategori kosong
             if(kategori.equals("???")) {
+                System.out.println("ERROR : Kategori kosong");
                 JOptionPane.showMessageDialog(null, "Kategori tidak boleh kosong",
                         "Error", JOptionPane.ERROR_MESSAGE);
                 return;
@@ -248,12 +255,22 @@ public class PeopleMenu extends JFrame {
             // ambil value dari semua inputan
             String id = idField.getText();
             String nama = namaField.getText();
+
+            // error handling untuk tahun kosong
+            if(tahunField.getText().equals("")) {
+                System.out.println("ERROR : Tahun lahir kosong");
+                JOptionPane.showMessageDialog(null, "Tahun lahir tidak boleh kosong",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             int tahunLahir = Integer.parseInt(tahunField.getText());
             String kategori = kategoriComboBox.getSelectedItem().toString();
             int kebugaran = kebugaranSlider.getValue();
 
             // error handling untuk id kosong
             if(id.equals("")) {
+                System.out.println("ERROR : ID kosong");
                 JOptionPane.showMessageDialog(null, "ID tidak boleh kosong",
                         "Error", JOptionPane.ERROR_MESSAGE);
                 return;
@@ -261,20 +278,15 @@ public class PeopleMenu extends JFrame {
 
             // error handling untuk nama kosong
             if(nama.equals("")) {
+                System.out.println("ERROR : Nama kosong");
                 JOptionPane.showMessageDialog(null, "Nama tidak boleh kosong",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            // error handling untuk nama kosong
-            if(tahunField.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Tahun Lahir tidak boleh kosong",
                         "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
             // error handling untuk kategori kosong
             if(kategori.equals("???")) {
+                System.out.println("ERROR : Kategori kosong");
                 JOptionPane.showMessageDialog(null, "Kategori tidak boleh kosong",
                         "Error", JOptionPane.ERROR_MESSAGE);
                 return;
