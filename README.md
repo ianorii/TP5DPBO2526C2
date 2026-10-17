@@ -49,28 +49,7 @@ Fungsi utama:
 - selectQuery(String sql) - Menjalankan perintah SELECT dan mengembalikan hasilnya.
 - insertUpdateDeleteQuery(String sql) - Menjalankan perintah INSERT, UPDATE, atau DELETE ke database.
 
-Driver yang dipakai: MySQL Connector/J (lib/mysql-connector-j-26.7.0.jar).
-
-# STRUKTUR FOLDER
-```
-TP5DPBO2526C2/
-├── README.md                  # Dokumen laporan tugas
-├── db_people.sql              # Script SQL database (tabel person)
-├── Dokumentasi/               # Screenshot dan GIF dokumentasi
-│   ├── 01-tampilan-utama.png
-│   ├── 02-insert-berhasil.gif
-│   └── ...
-└── PeopleData/                # Project Java Swing
-    ├── .idea/                 # Konfigurasi IntelliJ IDEA
-    ├── .gitignore
-    ├── lib/                   # Library eksternal
-    │   └── mysql-connector-j-26.7.0.jar
-    └── src/                   # Source code
-        ├── Database.java      # Koneksi & eksekusi query SQL
-        ├── PeopleMenu.java    # GUI utama (JFrame)
-        ├── PeopleMenu.form    # Desain GUI (IntelliJ GUI Designer)
-        └── Person.java        # Class model data pendaki
-```
+Driver yang dipakai: MySQL Connector/J (lib/mysql-connector-j-8.3.0.jar).
 
 # ALUR PROGRAM
 ### 1. Tampilan Utama
@@ -113,91 +92,70 @@ Klik tombol "Cancel" untuk mengosongkan semua input form dan membatalkan mode ed
 # DOKUMENTASI
 
 ## READ
-Menampilkan tampilan awal program dengan tabel data pendaki.
 
-> TARUH SCREENSHOT TAMPILAN UTAMA DI SINI
-> Saran file: Dokumentasi/01-tampilan-utama.png
-> ![Tampilan utama](Dokumentasi/01-tampilan-utama.png)
+![Read](Dokumentasi/Read.gif)
 
 ## ADD
-### Insert Berhasil
-Mengisi semua form dengan benar lalu klik Add, data masuk ke tabel.
+### 1. Insert Berhasil
 
-> TARUH GIF/SCREENSHOT INSERT BERHASIL DI SINI
-> Saran file: Dokumentasi/02-insert-berhasil.gif
-> ![Insert berhasil](Dokumentasi/02-insert-berhasil.gif)
+![Insert berhasil](Dokumentasi/insert1.gif)
 
-### Insert ID yang sudah ada
-Memasukkan ID yang sama dengan data yang sudah ada, muncul pesan ID sudah dipakai.
+### 2. Insert Tapi Ada Form Kosong
+a. ID kosong
 
-> TARUH SCREENSHOT INSERT ID SUDAH ADA DI SINI
-> Saran file: Dokumentasi/03-insert-id-duplikat.png
-> ![Insert ID duplikat](Dokumentasi/03-insert-id-duplikat.png)
+![Insert ID kosong](Dokumentasi/insert2a.gif)
 
-### Insert tapi salah satu form ada yang kosong
-Mengosongkan ID / Nama / Tahun Lahir lalu klik Add, muncul pesan field tidak boleh kosong.
+b. Nama kosong
 
-> TARUH SCREENSHOT INSERT FIELD KOSONG DI SINI (boleh 3 file: ID, Nama, Tahun)
-> Saran file: Dokumentasi/04-insert-id-kosong.png, Dokumentasi/05-insert-nama-kosong.png, Dokumentasi/06-insert-tahun-kosong.png
-> ![Insert ID kosong](Dokumentasi/04-insert-id-kosong.png)
-> ![Insert nama kosong](Dokumentasi/05-insert-nama-kosong.png)
-> ![Insert tahun kosong](Dokumentasi/06-insert-tahun-kosong.png)
+![Insert nama kosong](Dokumentasi/insert2b.gif)
 
-### Insert tapi kategori belum dipilih
-Membiarkan kategori di pilihan awal, muncul pesan kategori tidak boleh kosong.
+c. Tahun lahir kosong
 
-> TARUH SCREENSHOT INSERT KATEGORI KOSONG DI SINI
-> Saran file: Dokumentasi/07-insert-kategori-kosong.png
-> ![Insert kategori kosong](Dokumentasi/07-insert-kategori-kosong.png)
+![Insert tahun kosong](Dokumentasi/insert2c.gif)
 
-### Insert tapi tahun lahir bukan angka
-Mengisi tahun lahir dengan huruf, muncul pesan tahun harus berupa angka.
+### 3. Insert Kategori Kosong
 
-> TARUH SCREENSHOT INSERT TAHUN BUKAN ANGKA DI SINI
-> Saran file: Dokumentasi/08-insert-tahun-bukan-angka.png
-> ![Insert tahun bukan angka](Dokumentasi/08-insert-tahun-bukan-angka.png)
+![Insert kategori kosong](Dokumentasi/insert3.gif)
+
+### 4. Insert Tahun Bukan Angka
+
+![Insert tahun bukan angka](Dokumentasi/insert4.gif)
 
 ## UPDATE
-### Update Berhasil
-Klik baris tabel, ubah datanya, klik Update, data di tabel berubah.
+### 1. Update Berhasil
 
-> TARUH GIF/SCREENSHOT UPDATE BERHASIL DI SINI
-> Saran file: Dokumentasi/09-update-berhasil.gif
-> ![Update berhasil](Dokumentasi/09-update-berhasil.gif)
+![Update berhasil](Dokumentasi/update1.gif)
 
-### Update ID yang sudah ada
-Dalam mode edit, ganti ID ke milik data lain, muncul pesan ID sudah dipakai.
+ID sudah dipakai
 
-> TARUH SCREENSHOT UPDATE ID SUDAH ADA DI SINI
-> Saran file: Dokumentasi/10-update-id-duplikat.png
-> ![Update ID duplikat](Dokumentasi/10-update-id-duplikat.png)
+![Update ID sudah dipakai](Dokumentasi/update1-error.gif)
 
-### Update tapi salah satu form ada yang kosong
-Dalam mode edit, kosongkan ID / Nama / Tahun Lahir atau kembalikan kategori ke awal atau isi tahun dengan huruf, muncul pesan error yang sesuai.
+### 2. Update Tapi Ada Form Kosong
+a. ID kosong
 
-> TARUH SCREENSHOT UPDATE VALIDASI DI SINI
-> Saran file: Dokumentasi/11-update-field-kosong.png, Dokumentasi/12-update-tahun-bukan-angka.png
-> ![Update field kosong](Dokumentasi/11-update-field-kosong.png)
-> ![Update tahun bukan angka](Dokumentasi/12-update-tahun-bukan-angka.png)
+![Update ID kosong](Dokumentasi/update2a.gif)
+
+b. Nama kosong
+
+![Update nama kosong](Dokumentasi/update2b.gif)
+
+c. Tahun lahir kosong
+
+![Update tahun kosong](Dokumentasi/update2c.gif)
+
+### 3. Update Kategori Kosong
+
+![Update kategori kosong](Dokumentasi/update3.gif)
+
+### 4. Update Tahun Bukan Angka
+
+![Update tahun bukan angka](Dokumentasi/update4.gif)
 
 ## DELETE
-### Delete Berhasil (pilih Yes)
-Klik baris tabel, klik Delete, pilih Yes pada konfirmasi, data terhapus dari tabel.
+### Delete Berhasil
 
-> TARUH GIF/SCREENSHOT DELETE BERHASIL DI SINI
-> Saran file: Dokumentasi/13-delete-yes.gif
-> ![Delete Yes](Dokumentasi/13-delete-yes.gif)
+![Delete berhasil](Dokumentasi/delete.gif)
 
-### Delete Dibatalkan (pilih No)
-Klik Delete lalu pilih No, muncul pesan batal dan data tetap ada.
+### Delete Dibatalkan
 
-> TARUH SCREENSHOT DELETE BATAL DI SINI
-> Saran file: Dokumentasi/14-delete-no.png
-> ![Delete No](Dokumentasi/14-delete-no.png)
-
-## CANCEL
-Klik Cancel saat mode edit, form kosong kembali seperti awal.
-
-> TARUH GIF/SCREENSHOT CANCEL DI SINI
-> Saran file: Dokumentasi/15-cancel.gif
-> ![Cancel](Dokumentasi/15-cancel.gif)
+![Delete dibatalkan](Dokumentasi/delete-cancel.gif)
